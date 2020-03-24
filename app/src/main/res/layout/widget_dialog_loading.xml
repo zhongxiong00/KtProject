@@ -1,0 +1,11 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/loading_root"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_loading_bg"
+    android:padding="34dp">
+
+    <ProgressBar
+        android:layout_width="56dp"
+        android:layout_height="56dp" />
+</FrameLayout>

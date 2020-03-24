@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion var.compile_sdk_version
+    buildToolsVersion var.build_tools_version
+
+    defaultConfig {
+        applicationId var.pkg_name
+        minSdkVersion var.min_sdk
+        targetSdkVersion var.target_version
+        versionCode var.version_code
+        versionName var.version_name
+        ndk {
+            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+    }
+    signingConfigs {
+        /*   sign {
+               storeFile file("") //配置签名文件路径
+               storePassword ""
+               keyAlias ""
+               keyPassword ""
+           }*/
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        debug {
+            //signingConfig signingConfigs.sign
+            debuggable true
+            minifyEnabled false
+            buildConfigField "String", "BASE_SERVER_URL", BASE_SERVER_URL
+        }
+        release {
+            //  signingConfig signingConfigs.sign
+            debuggable false
+            minifyEnabled true
+            buildConfigField "String", "BASE_SERVER_URL", BASE_SERVER_URL
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$var.kt_version"
+    implementation "androidx.core:core-ktx:$var.core_ktx"
+    implementation "androidx.appcompat:appcompat:$var.appcompat"
+    implementation "androidx.multidex:multidex:$var.multi_dex"
+    implementation "androidx.constraintlayout:constraintlayout:$var.constraintlayout"
+    implementation "me.jessyan:autosize:$var.autosize"
+    implementation "androidx.lifecycle:lifecycle-runtime:$var.lifecycle"
+    implementation "androidx.lifecycle:lifecycle-extensions:$var.lifecycle"
+    implementation "com.squareup.retrofit2:retrofit:$var.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$var.retrofit"
+    implementation "com.google.code.gson:gson:$var.gson"
+
+}
