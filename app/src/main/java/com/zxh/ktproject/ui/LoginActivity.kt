@@ -3,8 +3,9 @@ package com.zxh.ktproject.ui
 import com.zxh.ktproject.R
 import com.zxh.ktproject.base.BaseActivity
 import com.zxh.ktproject.presenter.LoginPresenter
+import com.zxh.ktproject.ui.iview.ILoginView
 
-class LoginActivity : BaseActivity<LoginPresenter>() {
+class LoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
 
 
     override fun createPresenter(): LoginPresenter {
@@ -16,5 +17,9 @@ class LoginActivity : BaseActivity<LoginPresenter>() {
     }
 
     override fun initView() {
+    }
+
+    override fun loginSuccess() {
+
     }
 }

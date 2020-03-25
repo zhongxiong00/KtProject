@@ -2,9 +2,10 @@ package com.zxh.ktproject.base
 
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
+import com.zxh.ktproject.ui.iview.IBaseView
 import com.zxh.ktproject.utils.FragmentHelper
 
-abstract class BaseFragmentActivity<T:BasePresenter> : BaseActivity<T>(), IFragmentSwitch {
+abstract class BaseFragmentActivity<T:BasePresenter<out IBaseView>> : BaseActivity<T>(), IFragmentSwitch {
 
     protected var mCurrTag: String? = null
 

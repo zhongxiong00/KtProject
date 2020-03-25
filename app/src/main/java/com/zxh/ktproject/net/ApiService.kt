@@ -1,6 +1,6 @@
 package com.zxh.ktproject.net
 
-import android.database.Observable
+import androidx.lifecycle.LiveData
 import com.zxh.ktproject.entity.RespData
 import com.zxh.ktproject.entity.UserInfoBean
 import retrofit2.http.Field
@@ -10,5 +10,5 @@ import retrofit2.http.POST
 interface ApiService {
     @FormUrlEncoded
     @POST("")
-    fun login(@Field("") userName: String, @Field("") smsCode: String): Observable<RespData<UserInfoBean>>
+    fun login(@Field("") userName: String, @Field("") smsCode: String): LiveData<RespData<UserInfoBean>>
 }

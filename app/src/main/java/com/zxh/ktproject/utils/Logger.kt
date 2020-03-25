@@ -1,7 +1,7 @@
 package com.zxh.ktproject.utils
 
 import android.util.Log
-import androidx.multidex.BuildConfig
+import com.zxh.ktproject.BuildConfig
 
 class Logger {
     companion object {

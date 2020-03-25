@@ -1,16 +1,17 @@
-package com.zxh.ktproject
+package com.zxh.ktproject.ui
 
+import com.zxh.ktproject.R
 import com.zxh.ktproject.base.BaseActivity
 import com.zxh.ktproject.presenter.MainPresenter
+import com.zxh.ktproject.ui.iview.IMainView
 import com.zxh.ktproject.utils.AppUtils
-import com.zxh.ktproject.utils.Logger
 import com.zxh.ktproject.widgets.toast
 
-class MainActivity : BaseActivity<MainPresenter>() {
+class MainActivity : BaseActivity<MainPresenter>(),IMainView {
 
 
     override fun createPresenter(): MainPresenter {
-        return MainPresenter()
+        return MainPresenter(this)
     }
 
     override fun initView() {
@@ -23,10 +24,8 @@ class MainActivity : BaseActivity<MainPresenter>() {
 
     override fun onBackPressed() {
         if (AppUtils.canBack()) {
-            Logger.error("-----------------1")
             toast("再按一次退出程序")
         } else {
-            Logger.error("-----------------2")
             super.onBackPressed()
         }
     }
